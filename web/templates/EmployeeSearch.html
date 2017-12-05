@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Search{% endblock %}
+{% block head %}
+  {{ super() }}
+  <!--<style type="text/css">-->
+    <!--.important { color: #336699; }-->
+  <!--</style>-->
+{% endblock %}
+{% block content %}
+    <div class="container mt-5 w-50">
+        {% if not results %}
+        <form class="" action="" method="post" name="post">
+          {{ form.hidden_tag() }}
+          <div class="p-2 d-flex justify-content-center">
+            {{ form.EmployeeID(class="form-control", placeholder="Enter Emp ID") }}
+          </div>
+          <div class="p-2 d-flex justify-content-center">
+            <button type="submit" class="btn">Search</button>
+          </div>
+        </form>
+        {% else %}
+        asdf
+        {% endif %}
+        
+    
+    </div>
+
+
+{% endblock %}
