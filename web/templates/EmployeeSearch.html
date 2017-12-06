@@ -5,21 +5,52 @@
   <!--<style type="text/css">-->
     <!--.important { color: #336699; }-->
   <!--</style>-->
+
+<script type="text/javascript">
+    function Navigate(){
+         window.location.replace('/');
+        return false;
+    }
+   </script>
 {% endblock %}
 {% block content %}
     <div class="container mt-5 w-50">
-        {% if not results %}
+        {% if not Found %}
         <form class="" action="" method="post" name="post">
           {{ form.hidden_tag() }}
           <div class="p-2 d-flex justify-content-center">
             {{ form.EmployeeID(class="form-control", placeholder="Enter Emp ID") }}
           </div>
           <div class="p-2 d-flex justify-content-center">
-            <button type="submit" class="btn">Search</button>
+            <button type="submit" class="btn btn-primary">Search</button>
           </div>
         </form>
         {% else %}
-        asdf
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <b>Hours Available:</b>&nbsp;{{Hours[0]}}
+                </div>
+                <div class="col">
+                  <b>Hours Taken:</b>&nbsp;{{Hours[1]}}
+                </div>
+                <div class="col">
+                  <b>Hours Remaining:</b>&nbsp;{{Hours[2]}}
+                </div>
+              </div>
+                {% for hol in Holidays %}
+                  <div class="row">
+                    <div class="col">
+                      {{ hol.Date }}
+                    </div>
+                    <div class="col">
+                      {{ hol.Hours }}
+                    </div>
+                  </div>
+                {% endfor %}
+
+                <button type="button" onclick="Navigate();" class="btn btn-primary">Clear</button>
+            </div>
         {% endif %}
         
     

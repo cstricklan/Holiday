@@ -3,7 +3,7 @@ from DBModel import *
 import datetime
 
 class Holiday():
-    def __init(self, dbholiday):
+    def __init__(self, dbholiday):
         self.Date = dbholiday.Date
         self.Name = dbholiday.Name
         self.Fixed = dbholiday.Fixed
@@ -12,9 +12,10 @@ class Holiday():
     def GetHolidaysByServiceDate(servicedate):
         Holidays = []
         try:
-            dbholidays = tHoliday.select().where(Date >= datetime.date(2017, servicedate.month, 1))
+            dbholidays = tHolidays.select().where(tHolidays.Date >= servicedate)
             for dbholiday in dbholidays:
-                Holidays.append(Holiday(dbholiday))
+                h = Holiday(dbholiday)
+                Holidays.append(h)
         except Exception as err:
             print("Unable to get Holidays:", err)
             

@@ -8,4 +8,4 @@ WTF_CSRF_ENABLED = True
 SECRET_KEY="i-bet-you-cant-guess-it"
 
 __builtin__.DBType="sqlite"
-__builtin__.SQLLightDB = "../holidays.db"
+__builtin__.SQLLightDB = "/tmp/holidays.db"

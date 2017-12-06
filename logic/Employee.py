@@ -6,15 +6,17 @@ class Employee():
     def __init__(self, dbemployee):
         self.EmpID = dbemployee.EmpID
         self.Name = dbemployee.Name
-        self.ServiceDate = dbemployee.ServiceDate
-        self.Created = dbemployee.Created
+        self.ServiceDate = datetime.datetime.strptime(dbemployee.ServiceDate, "%m/%d/%Y")
+        # self.Created = dbemployee.Created
         self.LastViewed = dbemployee.LastViewed
         
     @staticmethod
     def get(id):
         employee = None
         try:
-            dbemployee = tEmployee.get(id)
+            print("Emp ID: {0}".format(id))
+            dbemployee = tEmployee.get(EmpID = id)
+            print(dbemployee.ServiceDate)
             employee = Employee(dbemployee)
         except Exception as err:
             print("Unable to get Employee: ", err)
@@ -35,8 +37,8 @@ class Employee():
     
     def UpdateLastViewed(self):
         try:
-            dbemployee = Employee.get(EmpID = self.EmpID)
-            dbemployee.LastViewed = datetime.datetime.now
+            dbemployee = tEmployee.get(EmpID = self.EmpID)
+            dbemployee.LastViewed = datetime.datetime.now()
             dbemployee.save()
         except Exception as err:
             print("Unable to Update Employee: ", err)

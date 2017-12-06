@@ -4,11 +4,11 @@ import datetime
 
 class EmployeeHoliday():
     def __init__(self, dbeh):
-        self.ID = dbeh.ID
+        self.ID = dbeh.id
         self.EmpID = dbeh.Emp.EmpID
         self.Date = dbeh.Date
         self.Hours = dbeh.Hours
-        self.Created = dbemployee.Created
+        # self.Created = dbemployee.Created
         
     @staticmethod
     def get(id):
@@ -31,7 +31,8 @@ class EmployeeHoliday():
             print("Unable to add employee holiday: {0}  ".format(empID), err)
             
         return eh
-        
+
+    @staticmethod
     def getAllbyUser(Employee):
         Holidays = []
         try:
@@ -44,6 +45,3 @@ class EmployeeHoliday():
             print("Unable to get holidays",  err)
         
         return Holidays
-        
-    
-  
